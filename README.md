@@ -19,18 +19,21 @@ python -m pytest
 - Represents individual cells in a spreadsheet
 - Attributes:
     - Operators for basic arithmetic operations
-- Calculate method: Evaluates an RPN expression represented as a list of tokens and returns the result.
+- Methods:
+    - Add Cell - Add a new sheet cell
+    - Resolve Cell - Resolve the sheet cell if possible. If there are references, recursively resolve.
+    - Populate Spreadsheet - Fill in initial sheet cells from csv file
 
 # Calculator Class
-- Performs arithmetic calculations, especially for expressions in RPN.
+- Performs arithmetic calculations for expressions in RPN.
 - Methods:
-    - calculate(tokens): Evaluates an RPN expression represented as a list of tokens and returns the result.
+    - Calculate: Evaluates an RPN expression represented as a list of tokens and returns the result.
 
 # CSVProcesser Class
 - Facilitates reading from and writing to CSV files.
 - Method:
-    - parse_csv(): Parses the input CSV file, populates the spreadsheet, resolves expressions, and prepares data for output.
-    - write_csv(data): Writes the resolved spreadsheet data to an output CSV file.
+    - Parse csv: Parses the input CSV file, populates the spreadsheet, resolves expressions, and prepares data for output.
+    - Write csv: Writes the resolved spreadsheet data to an output CSV file.
 
 The input and output:
 - Input CSV: Each cell in the input CSV can contain either a numeric value, arithmetic expression in Reverse Polish Notation or a reference to another cell, i.e A1, A2 etc
@@ -38,9 +41,9 @@ The input and output:
 
 ## Error Handling
 - The script includes error handling for the following issues:
-- Unresolvable cell references are left as is or marked with an error code.
-- Circular references/loops are detected and prevented from causing infinite loops.
-- Invalid expressions result in cells being marked with an error code.
+    - Unresolvable cell references are left as is or marked with an error code.
+    - Circular references/loops are detected and prevented from causing infinite loops.
+    - Invalid expressions result in cells being marked with an error code.
 
 ## Nice to have/ Limitations
 - Operations currently limited to basic arithmetic and deeply nested references may cause stack errors

@@ -88,12 +88,6 @@ class SpreadSheet:
                     else:
                         self.resolve_cell(cell)
 
-    def contains_ref(self, expression):
-        return any(self.is_ref(exp) for exp in expression)
-
-    def is_ref(self, exp):
-        return not exp.isdigit() and exp not in self.calculator.ops
-
     def no_operators_error(self, expression):
         return all(x.isdigit() for x in expression) and len(expression) > 1
 
